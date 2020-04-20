@@ -1,4 +1,4 @@
-#############Anova (Contract_Renewal Data )##########
+#############Anova (Labtat )##########
 
 #download dataset
 
@@ -53,28 +53,6 @@ summary(Anova_results)
 
 
 
-# Customer order form 
-# Unstacked data 
-
-cof<-read_excel(file.choose()) # customer_order(unstacked).xlsx
-View(cof) # countries are in their own columns; so we need to stack the data 
-stacked_cof<-stack(cof)
-attach(stacked_cof)
-View(stacked_cof)
-table(stacked_cof$ind,stacked_cof$values)
-chisq.test(table(stacked_cof$ind,stacked_cof$values))
 
 
-################# Mood's Median Test #################
-install.packages("RVAideMemoire")
-library(RVAideMemoire)
-height <- read_excel(file.choose())
-height
-table(height$Treatment)
-
-attach(height)
-mood.medtest(Growth ~ Treatment,data = height,exact = FALSE)
-
-############### Kruskal Wallis #################
-kruskal.test(Growth,Treatment)
 
